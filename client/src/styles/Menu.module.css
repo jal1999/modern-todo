@@ -1,0 +1,59 @@
+.container {
+    position: absolute;
+    height: 100vh;
+    width: 35vw;
+    background-color: white;
+    top: 0;
+    left: 0;
+    color: black;
+    pointer-events: auto;
+}
+
+.menuItems {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuItem {
+    width: 100%;
+    text-decoration: none;
+    color: gray;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 3vh;
+}
+
+.menuItem:hover {
+    padding: 2vh 0;
+    background-color: lightgray;
+    color: white;
+}
+
+.xMark {
+    font-size: 2rem;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+.xMark:hover {
+    opacity: .8;
+}
+
+.logo {
+    height: 25vh;
+    width: 25vh;
+    position: absolute;
+    margin-top: 3vh;
+    top: 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .container {
+        width: 60vw;
+    }
+}

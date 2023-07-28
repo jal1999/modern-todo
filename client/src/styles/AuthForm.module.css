@@ -1,0 +1,231 @@
+@media only screen and (min-width: 1000px) {
+    .container {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 70vh;
+        width: 40vw;
+        padding: 10vh 5vw;
+        z-index: -999;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.headerDiv {
+    display: flex;
+    justify-content: space-between;
+    /* margin: auto; */
+}
+
+.signup {
+    font-size: .85rem;
+    font-weight: bold;
+    color: gray;
+    margin-bottom: 5vh;
+}
+
+.header {
+    color: gray;
+}
+
+.signupLink {
+    color: black;
+    text-decoration: none;
+}
+
+.inputDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    margin-bottom: 3vh;
+    padding: .5rem;
+    background-color: rgba(255, 253, 253, 0.193);
+    border: 2px solid lightgray;
+    outline-color: gray;
+    border-radius: .25rem;
+    font-weight: bold;
+    font-size: .75rem;
+    color: gray;
+}
+
+.inputLabel {
+    margin-bottom: 1vh;
+    color: gray;
+    font-weight: bold;
+    font-size: .75rem;
+    display: inline;
+    width: fit-content;
+}
+
+.forgotDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.forgot {
+    margin: auto;
+}
+
+.signupLink:hover {
+    opacity: .7;
+    cursor: pointer;
+}
+
+.buttonDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 3vh;
+}
+
+.signInButton {
+    width: 100%;
+    padding: 1vh 0;
+    background-color: black;
+    color: white;
+    border: none;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    border-radius: .25rem;
+}
+
+.signInButton:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+.line {
+    display: inline-block;
+    border-top: 1px solid lightgray;
+    color: black;
+    background-color: black;
+    height: 1px;
+    width: 40%;
+    margin-top: 3vh;
+}
+
+.or {
+    margin-top: 3vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.orP {
+    position: relative;
+    top: 1.5vh;
+    color: gray;
+}
+
+.oauth {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@media screen and (min-width: 1000px) {
+    .logo {
+        height: 20vh;
+        width: 20vh;
+        border-radius: 6rem;
+        position: absolute;
+        top: -12vh;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    .questionMark {
+        vertical-align: middle;
+        color: #fff;
+        background-color: black;
+        width: 2.5vh;
+        height:2.5vh;
+        display:inline-block;
+        border-radius:100%;
+        font-size: .8rem;
+        text-align:center;
+        text-decoration:none;
+        -webkit-box-shadow: inset -1px -1px 1px 0px rgba(0,0,0,0.25);
+        -moz-box-shadow: inset -1px -1px 1px 0px rgba(0,0,0,0.25);
+        box-shadow: inset -1px -1px 1px 0px rgba(0,0,0,0.25);
+        margin-left: .25vw;
+        margin-bottom: .8vh;
+        cursor: pointer;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+    .logo {
+        height: 15vh;
+        width: 15vh;
+        border-radius: 6rem;
+        position: absolute;
+        top: 2vh;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    .signInButton,
+    .headerDiv,
+    .input,
+    .inputLabel {
+        margin-left: 4vw;
+        margin-right: 4vw;
+    }
+
+    .headerDiv {
+        margin-top: 8vh;
+    }
+
+    .questionMark {
+        position: relative;
+        bottom: .1vh;
+        vertical-align: middle;
+        color: #fff;
+        background-color: black;
+        width: 2.25vh;
+        height:2.25vh;
+        display:inline-block;
+        border-radius:100%;
+        font-size: 2vh;
+        text-align:center;
+        text-decoration:none;
+        -webkit-box-shadow: inset -1px -1px 1px 0px rgba(0,0,0,0.25);
+        -moz-box-shadow: inset -1px -1px 1px 0px rgba(0,0,0,0.25);
+        box-shadow: inset -1px -1px 1px 0px rgba(0,0,0,0.25);
+        margin-left: -3vw;
+        cursor: pointer;
+        margin-bottom: .75vh;
+    }
+}
+
+.error {
+    border: 1px solid lightcoral;
+}
+
+.questionMark:hover {
+    opacity: .7;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.error {
+    border: 1px solid lightcoral;
+}

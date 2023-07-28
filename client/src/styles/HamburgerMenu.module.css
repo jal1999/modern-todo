@@ -1,0 +1,30 @@
+.burgerLayer {
+    width: 3vw;
+    height: .5vh;
+    background-color: white;
+    margin-bottom: .75vh;
+}
+
+.contents {
+    margin: .75vh 0;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1vw;
+    width: 3vw;
+}
+
+.burger:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+    .burgerLayer {
+        width: 5vw;
+    }
+}
