@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+import "dotenv/config";
 
 export const MONGO_URI = process.env.MONGO;
 
