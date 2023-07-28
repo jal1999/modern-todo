@@ -12,7 +12,7 @@ export const generateToken = (email: string): Promise<string> => {
     });
 };
 
-export const verifyToken = (encodedToken: string): Promise<string | JwtPayload> => {
+export const validateToken = (encodedToken: string): Promise<string | JwtPayload> => {
     return new Promise((resolve, reject) => {
        verify(encodedToken, PRIVATE_KEY, (err, payload) => {
             if (err) {
