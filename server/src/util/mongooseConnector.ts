@@ -1,5 +1,6 @@
 import { connect } from "mongoose";
+import { MONGO_URI } from "./secrets";
 
 export const connectToDb = (): void => {
-    connect(process.env.URI);
+    connect(MONGO_URI);
 };
