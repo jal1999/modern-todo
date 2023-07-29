@@ -4,7 +4,8 @@ import { JwtPayload } from "jsonwebtoken";
 declare global {
     namespace Express {
         export interface Request {
-            jwtPayload?: JwtPayload | string
+            jwtPayload?: JwtPayload | string,
+            token?: string
         }
     }
 }
