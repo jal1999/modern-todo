@@ -3,7 +3,7 @@ import { HydratedDocument } from "mongoose";
 import { compare } from "bcryptjs";
 import { IUser, UserCollection } from "../models/userModel";
 import { generateToken } from "../util/token";
-import { googleSignup } from "../util/externalSignup";
+import { externalSignup } from "../util/externalSignup";
 
 export const internalLogin = async (req: Request, res: Response, next: NextFunction): Promise<Response> => {
     try {
@@ -35,17 +35,10 @@ export const internalLogin = async (req: Request, res: Response, next: NextFunct
     }
 };
 
-export const externalSignup = (req: Request, res: Response, next: NextFunction): Response => {
+export const externalSignupController = (req: Request, res: Response, next: NextFunction): Response => {
     const email: string = req.body.email, type: string = req.body.type;
-    if (type === "google") {
-        googleSignup(email);
-        return res
-            .status(201)
-            .end();
-    }
+    externalSignup(email, type);
     return res
-        .status(400)
-        .json({
-            explanation: `${type} is not a valid OAuth provider of this application.`
-        });
+        .status(201)
+        .end();
 };
