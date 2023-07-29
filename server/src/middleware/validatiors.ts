@@ -64,6 +64,7 @@ export const externalSignupValidator = (req: Request, res: Response, next: NextF
                 explanation: `Either the given email is not valid, or the given OAuth provider is not in the list ${OAuthProviders}`
             });
     }
+    next();
 };
 
 export const internalSignupValidator = (req: Request, res: Response, next: NextFunction): Response | void => {

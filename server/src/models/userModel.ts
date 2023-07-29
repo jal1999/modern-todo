@@ -24,7 +24,7 @@ const todoListSchema = new Schema<ITodoList>({
 
 export interface IUser {
     email: string;
-    password: string;
+    password?: string;
     type: string;
     todoLists: Types.DocumentArray<ITodoList>;
     _id?: Types.ObjectId;
@@ -32,9 +32,9 @@ export interface IUser {
 
 const userSchema = new Schema<IUser>({
     email: { type: String, required: true },
-    password: { type: String, required: true },
+    password: String,
     type: { type: String, required: true },
-    todoLists: [todoListSchema]
+    todoLists: { type: [todoListSchema], required: true }
 });
 
 export const UserCollection = model<IUser>("User", userSchema);

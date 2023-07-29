@@ -12,3 +12,5 @@ router.post("external-signup", externalSignupValidator, externalSignupController
 
 // POST /api/auth/internal-signup
 router.post("/internal-signup", emailValidator, passwordValidator, internalSignupValidator, internalSignup);
+
+export default router;

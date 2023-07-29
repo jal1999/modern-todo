@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { HydratedDocument, Types } from "mongoose";
 import { compare } from "bcryptjs";
+import { hashPassword } from "../util/bcryptHelpers";
 import { IUser, ITodoList, UserCollection } from "../models/userModel";
 import { generateToken } from "../util/token";
 
@@ -58,27 +59,23 @@ export const externalSignupController = async (req: Request, res: Response, next
 export const internalSignup = async (req: Request, res: Response, next: NextFunction): Promise<Response> => {
     const email: string = req.body.email, password: string = req.body.password, confirmPassword: string = req.body.confirmPassword;
     try {
-        const user: IUser = await UserCollection.findOne({ email: email });
-        if (!user) {
+        const user: HydratedDocument<IUser> = await UserCollection.findOne({ email: email });
+        if (user) {
             return res
-                .status(404)
+                .status(400)
                 .json({
-                    explanation: "The given user could not found"
+                    explanation: "The given user is already signed up."
                 });
         }
-        const matches: boolean = await compare(password, user.password);
-        if (!matches) {
-            return res
-                .status(404)
-                .json({
-                    explanation: "The given password does not match the password of the user with the given email."
-                });
-        }
+        await UserCollection.create({
+            email: email,
+            password: await hashPassword(password),
+            type: "internal",
+            todoLists: new Types.DocumentArray<ITodoList>([])
+        });
         return res
-            .status(200)
-            .json({
-                token: await generateToken(email)
-            });
+            .status(201)
+            .end();
     } catch (err: any) {
         return res
             .status(500)
