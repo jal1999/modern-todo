@@ -8,7 +8,7 @@ const router = Router();
 router.post("/internal-login", emailValidator, passwordValidator, internalLogin);
 
 // POST /api/auth/external-signup
-router.post("external-signup", externalSignupValidator, externalSignupController);
+router.post("/external-signup", externalSignupValidator, externalSignupController);
 
 // POST /api/auth/internal-signup
 router.post("/internal-signup", emailValidator, passwordValidator, internalSignupValidator, internalSignup);
