@@ -65,3 +65,15 @@ export const externalSignupValidator = (req: Request, res: Response, next: NextF
             });
     }
 };
+
+export const internalSignupValidator = (req: Request, res: Response, next: NextFunction): Response | void => {
+    const password: string = req.body.password, confirmPassword: string = req.body.confirmPassword;
+    if (confirmPassword !== password) {
+        return res
+            .status(400)
+            .json({
+                reason: { confirmPassword: true }
+            });
+    }
+    next();
+};
