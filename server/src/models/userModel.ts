@@ -11,7 +11,7 @@ const todoListEntrySchema = new Schema<ITodoListEntry>({
     completed: { type: Boolean, required: true }
 });
 
-interface ITodoList {
+export interface ITodoList {
     _id?: Types.ObjectId;
     content: Types.DocumentArray<ITodoListEntry>;
     dateOfCreation: number,
