@@ -4,8 +4,9 @@ import { useHistory } from 'react-router-dom';
 const GoogleOAuth = (props: any): ReactElement => {
     const history = useHistory();
 
-    const signInHandler = ({creds: credential}: any) => {
-        localStorage.setItem('token', credential);
+    const signInHandler = ({ credential: token }: any) => {
+        localStorage.setItem("token", token);
+        localStorage.setItem("provider", "google");
         history.replace('/');
     };
 
