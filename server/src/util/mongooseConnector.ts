@@ -1,9 +1,8 @@
 import { connect } from "mongoose";
-import { MONGO_URI } from "./secrets";
 
-export const connectToDb = async (): Promise<void> => {
+export const connectToDb = async (uri: string): Promise<typeof import("mongoose")> => {
     try {
-        await connect(MONGO_URI);
+        return (await connect(uri));
     } catch (err: any) {
         console.log(err);
     }

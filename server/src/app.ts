@@ -4,12 +4,12 @@ import cors from "cors";
 import authRoutes from "./routes/auth";
 
 import { connectToDb } from "./util/mongooseConnector";
-import { PORT } from "./util/secrets";
+import { MONGO_URI, PORT } from "./util/secrets";
 
 const app = express();
 
 // Connect to DB
-connectToDb();
+connectToDb(MONGO_URI);
 
 // Configuration
 app.set("port", PORT);
