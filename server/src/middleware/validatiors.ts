@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { isValidEmailDomain } from "../util/email/generate";
+import { OAuthProviders } from "../util/secrets";
 
 export const emailValidator = (req: Request, res: Response, next: NextFunction): Response | void => {
     // Regular expression that meets the official standards of validating emails
@@ -11,7 +12,7 @@ export const emailValidator = (req: Request, res: Response, next: NextFunction):
         return res
             .status(400)
             .json({
-                reason: "The given email is not valid."
+                reason: { email: true }
             });
     }
     const domain: string = email.split("@")[1];
@@ -19,11 +20,11 @@ export const emailValidator = (req: Request, res: Response, next: NextFunction):
         return res
             .status(400)
             .json({
-                reason: "The given email domain is not valid."
+                reason: { email: true }
             });
     }
     next();
-}
+};
 
 export const passwordValidator = (req: Request, res: Response, next: NextFunction): Response | void => {
     // Regular expression that ensures the password is at least 8 characters, contains 1 lowercase, uppercase, number, and special character
@@ -35,8 +36,32 @@ export const passwordValidator = (req: Request, res: Response, next: NextFunctio
         return res
             .status(400)
             .json({
-                reason: "The given password is not valid."
+                reason: { password: true }
             });
     }
     next();
-}
+};
+
+export const authorizationHeaderValidator = (req: Request, res: Response, next: NextFunction): Response | void => {
+    const authHeader: string = req.headers.authorization;
+    if (!authHeader) {
+        return res
+            .status(400)
+            .json({
+                reason: "Authorization header not present in the request."
+            });
+    }
+    req.token = authHeader.split(" ")[1];
+    next();
+};
+
+export const externalSignupValidator = (req: Request, res: Response, next: NextFunction): Response | void => {
+    const email: string = req.body.email, type: string = req.body.type;
+    if (!new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm").test(email) || OAuthProviders[type.toUpperCase()] === undefined) {
+        return res
+            .status(400)
+            .json({
+                explanation: `Either the given email is not valid, or the given OAuth provider is not in the list ${OAuthProviders}`
+            });
+    }
+};
