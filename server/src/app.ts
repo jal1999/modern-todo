@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import authRoutes from "./routes/auth";
+import todoRoutes from "./routes/todoListRoutes";
 
 import { connectToDb } from "./util/mongooseConnector";
 import { PORT } from "./util/secrets";
@@ -20,5 +21,6 @@ app.use(cors());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/todos", todoRoutes);
 
 export default app;

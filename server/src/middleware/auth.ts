@@ -22,9 +22,10 @@ import { JwtPayload } from "jsonwebtoken";
  * passes control to the next middleware in the middleware stack
  */
 export const isAuthenticated = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
-    const token: string = req.token;
+    const token: string = req.headers.authorization?.split(" ")[1];
     try {
-        const payload: JwtPayload | string = await validateToken(token, req.body.issuer);
+        // const payload: JwtPayload | string = await validateToken(token, req.body.issuer);
+        const payload: JwtPayload | string = await validateToken(token, "todo");
         req.jwtPayload = payload;
         next();
     } catch (err: any) {

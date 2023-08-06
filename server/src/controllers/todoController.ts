@@ -1,9 +1,10 @@
 import { HydratedDocument } from "mongoose";
 import { IUser, UserCollection } from "../models/userModel";
 
-export const getAllTodoList = async (req, res, next) => {
+export const getAllTodoLists = async (req, res, next) => {
+    const email: string = req.query.email;
     try {
-        const user: HydratedDocument<IUser> = await UserCollection.findOne({ email: req.body.email });
+        const user: HydratedDocument<IUser> = await UserCollection.findOne({ email: email });
         if (!user) {
             return res.status(404).end();
         }
