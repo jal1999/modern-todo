@@ -1,6 +1,6 @@
 import { Types, Schema, model } from "mongoose";
 
-interface ITodoListEntry {
+export interface ITodoListEntry {
     content: string;
     completed: boolean;
 }
