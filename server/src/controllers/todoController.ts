@@ -34,14 +34,12 @@ export const createTodoList = async (req, res, next) => {
 
 export const deleteTodoList = async (req, res, next) => {
     try {
-        const user: HydratedDocument<IUser> = await UserCollection.findById(req.body._id);
+        const user: HydratedDocument<IUser> = await UserCollection.findOne({ email: req.body.email });
         if (!user) {
             return res.status(404).end();
         }
-        const deleted = await UserCollection.findByIdAndDelete(req.body.id);
-        if (!deleted) {
-            return res.status(404).end();
-        }
+        user.todoLists = user.todoLists.pull(req.body.todoListId);
+        await user.save();
         return res.status(200).end();
     } catch (err: any) {
         return res.status(500).end();
