@@ -8,7 +8,7 @@ function App() {
   return (
     <Switch>
       <Route exact path='/'>
-        <Home />
+        {localStorage.getItem("token") ? <Home /> : <Redirect to="/login"/>}
       </Route>
       <Route exact path="/login">
         {localStorage.getItem('token') ? <Redirect to='/' /> : <AuthForm type='login' />}
