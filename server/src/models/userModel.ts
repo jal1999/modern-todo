@@ -12,7 +12,7 @@ const todoListEntrySchema = new Schema<ITodoListEntry>({
 
 export interface ITodoList {
     content: Types.DocumentArray<ITodoListEntry>;
-    dateOfCreation: string,
+    dateOfCreation: string
 }
 
 const todoListSchema = new Schema<ITodoList>({

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllTodoLists, createTodoList, deleteTodoList, addTodoEntry, editTodoEntry } from "../controllers/todoController";
+import { getAllTodoLists, createTodoList, deleteTodoList, addTodoEntry, editTodoEntry, deleteTodoEntry } from "../controllers/todoController";
 import { isAuthenticated } from "../middleware/auth";
 
 const router = Router();
@@ -13,5 +13,7 @@ router.delete("/delete-todo", isAuthenticated, deleteTodoList);
 router.post("/add-entry", isAuthenticated, addTodoEntry);
 
 router.patch("/edit-entry", isAuthenticated, editTodoEntry);
+
+router.delete("/delete-entry", isAuthenticated, deleteTodoEntry);
 
 export default router;
