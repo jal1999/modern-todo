@@ -3,18 +3,16 @@ import { Types, Schema, model } from "mongoose";
 interface ITodoListEntry {
     content: string;
     completed: boolean;
-    _id?: Types.ObjectId
 }
 
 const todoListEntrySchema = new Schema<ITodoListEntry>({
-    content: { type: String, required: true },
+    content: String,
     completed: { type: Boolean, required: true }
 });
 
 export interface ITodoList {
-    _id?: Types.ObjectId;
     content: Types.DocumentArray<ITodoListEntry>;
-    dateOfCreation: string
+    dateOfCreation: string,
 }
 
 const todoListSchema = new Schema<ITodoList>({
@@ -27,7 +25,6 @@ export interface IUser {
     password?: string;
     type: string;
     todoLists: Types.DocumentArray<ITodoList>;
-    _id?: Types.ObjectId;
 }
 
 const userSchema = new Schema<IUser>({

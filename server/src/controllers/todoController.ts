@@ -1,5 +1,5 @@
 import { HydratedDocument } from "mongoose";
-import { IUser, UserCollection } from "../models/userModel";
+import { ITodoList, IUser, UserCollection } from "../models/userModel";
 
 export const getAllTodoLists = async (req, res, next) => {
     const email: string = req.query.email;
@@ -44,6 +44,25 @@ export const deleteTodoList = async (req, res, next) => {
         }
         return res.status(200).end();
     } catch (err: any) {
+        return res.status(500).end();
+    }
+};
+
+export const addTodoEntry = async (req, res, next) => {
+    try {
+        const user: HydratedDocument<IUser> = await UserCollection.findOne({ email: req.body.email });
+        if (!user) {
+            return res.status(404).end();
+        }
+        const todoList: ITodoList = user.todoLists.find((todoListEntry) => todoListEntry._id.toString() === req.body._id);
+        if (!todoList) {
+            return res.status(404).end();
+        }
+        todoList.content.push({ content: "", completed: false });
+        await user.save();
+        return res.status(201).end();
+    } catch (err: any) {
+        console.log(err);
         return res.status(500).end();
     }
 };
