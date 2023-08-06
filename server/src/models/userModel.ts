@@ -14,12 +14,12 @@ const todoListEntrySchema = new Schema<ITodoListEntry>({
 export interface ITodoList {
     _id?: Types.ObjectId;
     content: Types.DocumentArray<ITodoListEntry>;
-    dateOfCreation: number,
+    dateOfCreation: string
 }
 
 const todoListSchema = new Schema<ITodoList>({
     content: { type: [todoListEntrySchema], required: true },
-    dateOfCreation: { type: Number, required: true }
+    dateOfCreation: { type: String, required: true }
 });
 
 export interface IUser {
