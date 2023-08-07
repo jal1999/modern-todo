@@ -24,11 +24,11 @@ export const createTodoList = async (req, res, next) => {
         if (!user) {
             return res.status(404).end();
         }
-        user.todoLists.push({ content: [], dateOfCreation: new Date().toString() });
+        user.todoLists.push({ title: "blah", content: [], dateOfCreation: new Date().toString() });
         await user.save();
         return res.status(201).end();
     } catch (err: any) {
-        return res.status(500).end();
+        return res.status(500).json({ err: err });
     }
 };
 

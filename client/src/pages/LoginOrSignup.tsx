@@ -48,7 +48,8 @@ const AuthForm = (props: any): ReactElement => {
             try {
                 const { data: { token }}: AxiosResponse = await axios.post(url, body, config);
                 localStorage.setItem('token', token);
-                history.replace('/');
+                localStorage.setItem('email', email);
+                window.location.replace("http://localhost:3000/");
             } catch (err: any) {
                 const reasons: Error = err.response.data.reason;
                 setError(reasons);
@@ -58,7 +59,7 @@ const AuthForm = (props: any): ReactElement => {
         } else {
             try {
                 await axios.post(url, body, config);
-                history.replace('/login');
+                window.location.href = "/login";
             } catch (err: any) {
                 const reasons: Error = err.response.data.reason;
                 console.log(reasons);

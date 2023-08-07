@@ -11,11 +11,13 @@ const todoListEntrySchema = new Schema<ITodoListEntry>({
 });
 
 export interface ITodoList {
+    title: string;
     content: Types.DocumentArray<ITodoListEntry>;
-    dateOfCreation: string
+    dateOfCreation: string;
 }
 
 const todoListSchema = new Schema<ITodoList>({
+    title: { type: String, required: true },
     content: { type: [todoListEntrySchema], required: true },
     dateOfCreation: { type: String, required: true }
 });

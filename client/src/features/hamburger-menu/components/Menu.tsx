@@ -8,7 +8,7 @@ const Menu = (props: any): ReactElement => {
     const originalBackground = document.body.style.background;
     const originalPointerEvent = document.body.style.pointerEvents;
     const originalZIndex = document.body.style.zIndex;
-    document.body.style.background = "rgba(0,0,0,.5)";
+    document.body.style.background = "rgba(0,0,0,.8)";
     document.body.style.zIndex = '2';
     document.body.style.pointerEvents = 'none'; // Makes background un-clickable.
 

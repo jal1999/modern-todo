@@ -1,7 +1,10 @@
 import { ReactElement, useEffect } from 'react';
+import decode from "jwt-decode";
 
 const GoogleOAuth = (props: any): ReactElement => {
     const signInHandler = ({ credential: token }: any) => {
+        const { email } = JSON.parse(JSON.stringify(decode(token)));
+        localStorage.setItem("email", JSON.stringify(email));
         localStorage.setItem("token", token);
         localStorage.setItem("provider", "google");
         console.log("hello, there");
