@@ -16,10 +16,13 @@
     "fs": "^0.0.1-security",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
+    "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "react-redux": "^8.1.2",
     "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },

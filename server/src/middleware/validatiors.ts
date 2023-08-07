@@ -42,19 +42,6 @@ export const passwordValidator = (req: Request, res: Response, next: NextFunctio
     next();
 };
 
-export const authorizationHeaderValidator = (req: Request, res: Response, next: NextFunction): Response | void => {
-    const authHeader: string = req.headers.authorization;
-    if (!authHeader) {
-        return res
-            .status(400)
-            .json({
-                reason: "Authorization header not present in the request."
-            });
-    }
-    req.token = authHeader.split(" ")[1];
-    next();
-};
-
 export const externalSignupValidator = (req: Request, res: Response, next: NextFunction): Response | void => {
     const email: string = req.body.email, type: string = req.body.type;
     if (!new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm").test(email) || OAuthProviders[type.toUpperCase()] === undefined) {

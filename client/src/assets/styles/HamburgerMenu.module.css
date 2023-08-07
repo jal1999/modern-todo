@@ -1,12 +1,23 @@
+@media only screen and (max-width: 1000px) {
+    .burgerLayer {
+        width: 10vw;
+    }
+}
+
 .burgerLayer {
-    width: 3vw;
     height: .5vh;
     background-color: white;
     margin-bottom: .75vh;
 }
 
+@media screen and (min-width: 1000px) {
+    .burgerLayer {
+        width: 3vw;
+    } 
+}
+
 .contents {
-    margin: .75vh 0;
+    margin: 1vh 0;
 }
 
 .container {
@@ -21,10 +32,4 @@
 .burger:hover {
     opacity: .8;
     cursor: pointer;
-}
-
-@media screen and (max-width: 1000px) {
-    .burgerLayer {
-        width: 5vw;
-    }
 }

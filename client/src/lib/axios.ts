@@ -1,5 +1,7 @@
 import axios, { AxiosHeaders, AxiosRequestConfig, AxiosResponse } from "axios";
 
+axios.defaults.withCredentials = true
+
 export interface Response {
     body: any,
     status: number
@@ -20,7 +22,7 @@ export const getRequest = (requestUrl: string, token: string): Promise<Response>
             };
             resolve(clientResponse);
         } catch (err: any) {
-            reject();
+            reject(err);
         }
     });
 }

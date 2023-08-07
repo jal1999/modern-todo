@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth";
 import todoRoutes from "./routes/todoListRoutes";
 
@@ -17,7 +18,8 @@ app.set("port", PORT);
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cookieParser());
 
 // Routes
 app.use("/api/auth", authRoutes);

@@ -3,9 +3,10 @@ import { HydratedDocument, Types } from "mongoose";
 import { compare } from "bcryptjs";
 import { hashPassword } from "../util/bcryptHelpers";
 import { IUser, ITodoList, UserCollection } from "../models/userModel";
-import { generateToken } from "../util/token";
+import { GenerateToken, generateToken } from "../util/token";
 
 export const internalLogin = async (req: Request, res: Response, next: NextFunction): Promise<Response> => {
+    // console.log(req.cookies);
     try {
         const user: HydratedDocument<IUser> = await UserCollection.findOne({ email: req.body.email });
         if (!user) {
@@ -23,7 +24,9 @@ export const internalLogin = async (req: Request, res: Response, next: NextFunct
                     reasons: { password: true }
                 });
         }
+        const token: GenerateToken = await generateToken(user.email);
         return res
+            .cookie("token", token.token, { maxAge: token.expires, httpOnly: true })
             .status(200)
             .json({
                 token: await generateToken(user.email)

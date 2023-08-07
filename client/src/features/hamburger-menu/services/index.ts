@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction } from "react";
+import { AnyAction, Dispatch } from "redux";
 
-export const burgerClickHandler = (stateSettingFunction: Dispatch<SetStateAction<boolean>>): void => {
-    stateSettingFunction((prevState) => !prevState);
+export const burgerClickHandler = (dispatchFunction: Dispatch<AnyAction>, currentMenuState: boolean): void => {
+    const type = currentMenuState ? "menuClose" : "menuOpen";
+    dispatchFunction({ type: type });
 }

@@ -41,18 +41,18 @@ const AuthForm = (props: any): ReactElement => {
     const formSubmitHandler = async (event: FormEvent) => {
         event.preventDefault();
         const url = `http://localhost:8080/api/auth/${props.type === 'login' ? 'internal-login' : 'internal-signup'}`;
-        const headers = { 'Content-Type': 'application/json' };
+        const headers = {};
         const config = { headers: headers }
         const body = props.type === 'signup' ? { email: email, password: password, confirmPassword: confirmPassword } : { email: email, password: password };
         if (props.type === 'login') {
             try {
-                const { data: { token }}: AxiosResponse = await axios.post(url, body, config);
-                localStorage.setItem('token', token);
-                localStorage.setItem('email', email);
+                await axios.post(url, body, config);
+                document.cookie = "isLoggedIn=true";
                 window.location.replace("http://localhost:3000/");
             } catch (err: any) {
-                const reasons: Error = err.response.data.reason;
-                setError(reasons);
+                // const reasons: Error = err.response.data.reason;
+                console.log(err);
+                // setError(reasons);
                 setEmail('');
                 setPassword('');
             }

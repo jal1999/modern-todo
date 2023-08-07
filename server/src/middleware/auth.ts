@@ -22,17 +22,21 @@ import { JwtPayload } from "jsonwebtoken";
  * passes control to the next middleware in the middleware stack
  */
 export const isAuthenticated = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
-    const token: string = req.headers.authorization?.split(" ")[1];
+    const token: string = req.cookies["token"];
+    console.log("Here are all of the cookies", req.cookies);
+    console.log("Here is the token in the HTTP-only cookie", token);
     try {
-        // const payload: JwtPayload | string = await validateToken(token, req.body.issuer);
         const payload: JwtPayload | string = await validateToken(token, "todo");
         req.jwtPayload = payload;
-        next();
+        return next();
     } catch (err: any) {
+        console.log(err);
+        console.error(err);
         return res
             .status(401)
             .json({
-                reason: "Invalid token",
+                reason: "at least it changed",
+                error: err.toString()
             });
     }
 };

@@ -1,9 +1,16 @@
 .todoList {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: lightgray;
     padding: 2rem;
     margin-top: 3vh;
     text-align: center;
+}
+
+.modalOpen {
+    background-color: inherit;
+}
+
+.normal {
+    background-color: lightgray;
 }
 
 .todoList:hover {
@@ -14,4 +21,8 @@
 .todoListTitle {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 2.5rem;
+}
+
+#dark {
+    background: rgba(0,0,0,.8);
 }
