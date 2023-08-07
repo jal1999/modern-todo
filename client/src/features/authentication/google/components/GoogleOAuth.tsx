@@ -1,13 +1,11 @@
 import { ReactElement, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 
 const GoogleOAuth = (props: any): ReactElement => {
-    const history = useHistory();
-
     const signInHandler = ({ credential: token }: any) => {
         localStorage.setItem("token", token);
         localStorage.setItem("provider", "google");
-        history.replace('/');
+        console.log("hello, there");
+        window.location.replace("http://localhost:3000/");
     };
 
     // This useEffect block is needed, else the sign in button will disappear on any re-render.

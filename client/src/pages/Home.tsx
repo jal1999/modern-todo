@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import NavBar from '../components/functional/NavBar';
-import global from '../styles/global.css';
-import styles from '../styles/Home.module.css';
+import NavBar from '../features/navbar/components/NavBar';
+import global from '../assets/styles/global.css';
+import styles from '../assets/styles/Home.module.css';
 
 const Home = (props: any): ReactElement => {
     return (

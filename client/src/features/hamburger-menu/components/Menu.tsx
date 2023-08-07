@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
-import styles from '../../styles/Menu.module.css';
+import styles from '../../../assets/styles/Menu.module.css';
 import { Link } from 'react-router-dom';
 import { FaXmark } from 'react-icons/fa6';
-import Logo from '../../assets/logo.png'
+import Logo from '../../../assets/images/logo.png'
 
 const Menu = (props: any): ReactElement => {
     const originalBackground = document.body.style.background;

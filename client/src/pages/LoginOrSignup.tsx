@@ -1,11 +1,9 @@
-import { FormEvent, ReactElement, useState, useRef, useEffect, ChangeEvent, ChangeEventHandler } from 'react';
-import styles from '../styles/AuthForm.module.css';
+import { FormEvent, ReactElement, useState, ChangeEvent } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import GoogleOAuth from '../components/oauth/GoogleOAuth';
 import axios, { AxiosResponse } from 'axios';
-import { FaRegCircleQuestion } from 'react-icons/fa6';
-import Logo from '../assets/logo.png'
-import { assert } from 'console';
+import styles from "../assets/styles/AuthForm.module.css"
+import Logo from "../assets/images/logo.png";
+import GoogleOAuth from '../features/authentication/google/components/GoogleOAuth';
 
 const AuthForm = (props: any): ReactElement => {
     interface Error {
@@ -48,7 +46,7 @@ const AuthForm = (props: any): ReactElement => {
         const body = props.type === 'signup' ? { email: email, password: password, confirmPassword: confirmPassword } : { email: email, password: password };
         if (props.type === 'login') {
             try {
-                const { data: { token: token }}: AxiosResponse = await axios.post(url, body, config);
+                const { data: { token }}: AxiosResponse = await axios.post(url, body, config);
                 localStorage.setItem('token', token);
                 history.replace('/');
             } catch (err: any) {
@@ -73,7 +71,7 @@ const AuthForm = (props: any): ReactElement => {
         <div className={styles.container}>
 
             {/* Logo and headers */}
-            <img className={styles.logo} src={Logo} />
+            <img className={styles.logo} src={Logo} alt="" />
             <div className={styles.headerDiv}>
                 <h3 className={styles.header}> {props.type === 'login' ? 'Sign in' : 'Sign up'}</h3>
                 <p className={styles.signup}>

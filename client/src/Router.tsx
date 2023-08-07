@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
-import AuthForm from './pages/AuthForm';
-import GoogleOAuth from './components/oauth/GoogleOAuth';
+import LoginOrSignup from './pages/LoginOrSignup';
+import GoogleOAuth from './features/authentication/google/components/GoogleOAuth';
 
 function App() {
   return (
@@ -11,10 +11,10 @@ function App() {
         {localStorage.getItem("token") ? <Home /> : <Redirect to="/login"/>}
       </Route>
       <Route exact path="/login">
-        {localStorage.getItem('token') ? <Redirect to='/' /> : <AuthForm type='login' />}
+        {localStorage.getItem('token') ? <Redirect to='/' /> : <LoginOrSignup type='login' />}
       </Route>
       <Route exact path="/sign-up">
-        {localStorage.getItem('token') ? <Redirect to='/'/> : <AuthForm type='signup' />}
+        {localStorage.getItem('token') ? <Redirect to='/'/> : <LoginOrSignup type='signup' />}
       </Route>
     </Switch>
   )
