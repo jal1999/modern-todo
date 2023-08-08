@@ -1,6 +1,6 @@
-import axios, { AxiosHeaders, AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true; // Sends cookies with each request
 
 export interface Response {
     body: any,
@@ -8,17 +8,12 @@ export interface Response {
 }
 
 export const getRequest = (requestUrl: string, token: string): Promise<Response> => {
-    const config: AxiosRequestConfig = {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    }
     return new Promise(async (resolve, reject) => {
         try {
-            const response: AxiosResponse = await axios.get(requestUrl, config);
+            const { data: responseBody, status: responseStatus }  = await axios.get(requestUrl);
             const clientResponse: Response = {
-                body: response.data,
-                status: response.status
+                body: responseBody,
+                status: responseStatus
             };
             resolve(clientResponse);
         } catch (err: any) {
@@ -28,14 +23,9 @@ export const getRequest = (requestUrl: string, token: string): Promise<Response>
 }
 
 export const postRequest = (requestUrl: string, body: Object, token: string): Promise<Response> => {
-    const config: AxiosRequestConfig = {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    }
     return new Promise(async (resolve, reject) => {
         try {
-            const { data: responseBody, status: responseStatus }: AxiosResponse = await axios.post(requestUrl, body, config);
+            const { data: responseBody, status: responseStatus }: AxiosResponse = await axios.post(requestUrl, body);
             const clientResponse: Response = {
                 body: responseBody,
                 status: responseStatus
@@ -49,9 +39,6 @@ export const postRequest = (requestUrl: string, body: Object, token: string): Pr
 
 export const deleteRequest = (requestUrl: string, body: Object, token: string): Promise<Response> => {
     const config: AxiosRequestConfig = {
-        headers: {
-            Authorization: `Bearer ${token}`
-        },
         data: body
     }
     return new Promise(async (resolve, reject) => {
@@ -69,14 +56,9 @@ export const deleteRequest = (requestUrl: string, body: Object, token: string): 
 };
 
 export const patchRequest = (requestUrl: string, body: Object, token: string): Promise<Response> => {
-    const config: AxiosRequestConfig = {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    }
     return new Promise(async (resolve, reject) => {
         try {
-            const { data: responseBody, status: responseStatus } = await axios.patch(requestUrl, body, config);
+            const { data: responseBody, status: responseStatus } = await axios.patch(requestUrl, body);
             const clientResponse: Response = {
                 body: responseBody,
                 status: responseStatus
