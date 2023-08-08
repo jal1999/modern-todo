@@ -7,6 +7,13 @@ export interface Response {
     status: number
 }
 
+/**
+ * Makes an HTTP GET request and returns a promise that resolves with the response body and status code, 
+ * or rejects with an error.
+ * 
+ * @param {string} requestUrl - The URL of the resource you want to retrieve.
+ * @returns A Promise that resolves to a Response object.
+ */
 export const getRequest = (requestUrl: string, token: string): Promise<Response> => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -22,7 +29,14 @@ export const getRequest = (requestUrl: string, token: string): Promise<Response>
     });
 }
 
-export const postRequest = (requestUrl: string, body: Object, token: string): Promise<Response> => {
+/**
+ * Makes an HTTP POST request and returns a promise that resolves with the response body and status code, 
+ * or rejects with an error.
+ * 
+ * @param {string} requestUrl - The URL of the resource you want to retrieve.
+ * @returns A Promise that resolves to a Response object.
+ */
+export const postRequest = (requestUrl: string, body: Object): Promise<Response> => {
     return new Promise(async (resolve, reject) => {
         try {
             const { data: responseBody, status: responseStatus }: AxiosResponse = await axios.post(requestUrl, body);
@@ -37,7 +51,14 @@ export const postRequest = (requestUrl: string, body: Object, token: string): Pr
     });
 };
 
-export const deleteRequest = (requestUrl: string, body: Object, token: string): Promise<Response> => {
+/**
+ * Makes an HTTP DELETE request and returns a promise that resolves with the response body and status code, 
+ * or rejects with an error.
+ * 
+ * @param {string} requestUrl - The URL of the resource you want to retrieve.
+ * @returns A Promise that resolves to a Response object.
+ */
+export const deleteRequest = (requestUrl: string, body: Object): Promise<Response> => {
     const config: AxiosRequestConfig = {
         data: body
     }
@@ -55,7 +76,14 @@ export const deleteRequest = (requestUrl: string, body: Object, token: string): 
     });
 };
 
-export const patchRequest = (requestUrl: string, body: Object, token: string): Promise<Response> => {
+/**
+ * Makes an HTTP PATCH request and returns a promise that resolves with the response body and status code, 
+ * or rejects with an error.
+ * 
+ * @param {string} requestUrl - The URL of the resource you want to retrieve.
+ * @returns A Promise that resolves to a Response object.
+ */
+export const patchRequest = (requestUrl: string, body: Object): Promise<Response> => {
     return new Promise(async (resolve, reject) => {
         try {
             const { data: responseBody, status: responseStatus } = await axios.patch(requestUrl, body);
