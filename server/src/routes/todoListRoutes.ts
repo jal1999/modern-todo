@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { getAllTodoLists, createTodoList, deleteTodoList, addTodoEntry, editTodoEntry, deleteTodoEntry } from "../controllers/todoController";
+import { getAllTodoLists, createTodoList, deleteTodoList, addTodoEntry, editTodoEntry, deleteTodoEntry, getTodoList } from "../controllers/todoController";
 import { isAuthenticated } from "../middleware/auth";
 
 const router = Router();
 
 router.get("/get-todos", isAuthenticated, getAllTodoLists);
+
+router.get("/get-todos/:todoListId", isAuthenticated, getTodoList);
 
 router.post("/create-todo", isAuthenticated, createTodoList);
 

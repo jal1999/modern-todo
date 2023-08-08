@@ -7,7 +7,7 @@ const Item = (props: any) => {
     const menuIsOpen = useSelector((state: any) => state.menuOpen);
 
     return (
-        <div className={styles.containter} onClick={() => todoListRedirect(props.todoListTitle)}>
+        <div className={styles.containter} onClick={() => todoListRedirect(props.todoListId)}>
             <h1>{props.todoListTitle}</h1>
         </div>
     )

@@ -52,9 +52,9 @@ const AuthForm = (props: any): ReactElement => {
                 setCookie("isLoggedIn", "true");
                 window.location.replace("http://localhost:3000/");
             } catch (err: any) {
-                const reasons: Error = err.response.data.reason;
+                // const reasons: Error = err.response.data.reason;
                 console.log(err);
-                setError(reasons);
+                // setError(reasons);
                 setEmail('');
                 setPassword('');
             }

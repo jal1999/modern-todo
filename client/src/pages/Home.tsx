@@ -8,13 +8,13 @@ import { useParams } from 'react-router-dom';
 const Home = (props: any): ReactElement => {
     const params = useParams();
     return (
-        <>
+        <div className={styles.container}>
             <NavBar />
             <div className={styles.section}>
                 <h1 className={styles.sectionTitle}>Your Lists</h1>
                 <List />
             </div>
-        </>
+        </div>
     )
 };
 

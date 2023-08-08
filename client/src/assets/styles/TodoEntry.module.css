@@ -1,0 +1,19 @@
+.input {
+    width: 20vw;
+    height: 4vh;
+}
+
+.checkbox {
+    margin-left: 2vw;
+    width: 1.5vw;
+    height: 1.5vw;
+}
+
+.circle {
+    margin-left: 2vw;
+    display: inline-block;
+    width: 1.5vw;
+    height: 1.5vw;
+    border-radius: 100rem;
+    border: 1px solid black;
+}

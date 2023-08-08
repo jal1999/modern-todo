@@ -1,0 +1,18 @@
+.container {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 3vh;
+    margin-bottom: 2vh;
+}
+
+.container:hover {
+    cursor: pointer;
+    opacity: .9;
+}
+
+.circle {
+    width: 3vw;
+}

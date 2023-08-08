@@ -46,7 +46,7 @@ export const postRequest = (requestUrl: string, body: Object): Promise<Response>
             }
             resolve(clientResponse);
         } catch (err: any) {
-            reject();
+            reject(err);
         }
     });
 };

@@ -7,7 +7,6 @@
         transform: translate(-50%, -50%);
         height: 70vh;
         width: 40vw;
-        padding: 10vh 5vw;
         z-index: -999;
     }
 }

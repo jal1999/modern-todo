@@ -1,3 +1,7 @@
+.container {
+    overflow-x: hidden;
+}
+
 .button {
     position: absolute;
     left: 50%;
