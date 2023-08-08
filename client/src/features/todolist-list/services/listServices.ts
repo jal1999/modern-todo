@@ -15,7 +15,7 @@ export interface TodoList {
 export const getAllTodoLists = async (email: string): Promise<Array<any>> => {
     const url: string = `http://localhost:8080/api/todos/get-todos?email=${"jlafarr99@gmail.com"}`
     try {
-        const { body: { todoLists } }: Response = await getRequest(url, "toke");
+        const { body: { todoLists } }: Response = await getRequest(url);
         return todoLists;
     } catch (err: any) {
         console.log("here is the error", err);

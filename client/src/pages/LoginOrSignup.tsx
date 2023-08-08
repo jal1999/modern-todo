@@ -1,9 +1,10 @@
 import { FormEvent, ReactElement, useState, ChangeEvent } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import axios, { AxiosResponse } from 'axios';
 import styles from "../assets/styles/AuthForm.module.css"
 import Logo from "../assets/images/logo.png";
 import GoogleOAuth from '../features/authentication/google/components/GoogleOAuth';
+import { postRequest } from '../lib/axios';
+import { useCookies } from 'react-cookie';
 
 const AuthForm = (props: any): ReactElement => {
     interface Error {
@@ -12,6 +13,7 @@ const AuthForm = (props: any): ReactElement => {
         confirmPassword?: boolean
     }
 
+    const [cookies, setCookie, deleteCookie] = useCookies();
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
@@ -46,19 +48,19 @@ const AuthForm = (props: any): ReactElement => {
         const body = props.type === 'signup' ? { email: email, password: password, confirmPassword: confirmPassword } : { email: email, password: password };
         if (props.type === 'login') {
             try {
-                await axios.post(url, body, config);
-                document.cookie = "isLoggedIn=true";
+                await postRequest(url, body);
+                setCookie("isLoggedIn", "true");
                 window.location.replace("http://localhost:3000/");
             } catch (err: any) {
-                // const reasons: Error = err.response.data.reason;
+                const reasons: Error = err.response.data.reason;
                 console.log(err);
-                // setError(reasons);
+                setError(reasons);
                 setEmail('');
                 setPassword('');
             }
         } else {
             try {
-                await axios.post(url, body, config);
+                await postRequest(url, body);
                 window.location.href = "/login";
             } catch (err: any) {
                 const reasons: Error = err.response.data.reason;

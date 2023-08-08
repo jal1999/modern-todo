@@ -4,12 +4,13 @@ import LoginOrSignup from './pages/LoginOrSignup';
 import { useCookies } from 'react-cookie';
 
 function App() {
-  const [cookies, setIsLoggedIn, removeIsLoggedIn] = useCookies(["isLoggedIn"]);
+  const [cookies, setCookie, removeCookie] = useCookies();
+  console.log("here are the cookies: ", cookies);
 
   return (
     <Switch>
       <Route exact path='/'>
-        {cookies["isLoggedIn"] ? <Home /> : <Redirect to="/login"/>}
+        <Home /> 
       </Route>
       <Route exact path="/login">
         {cookies["isLoggedIn"] ? <Redirect to='/' /> : <LoginOrSignup type='login' />}

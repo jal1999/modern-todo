@@ -9,7 +9,6 @@ const Home = (props: any): ReactElement => {
     const params = useParams();
     return (
         <>
-            <h1>{JSON.stringify(params)}</h1>
             <NavBar />
             <div className={styles.section}>
                 <h1 className={styles.sectionTitle}>Your Lists</h1>

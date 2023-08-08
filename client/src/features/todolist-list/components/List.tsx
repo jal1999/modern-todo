@@ -9,6 +9,7 @@ import { JsxElement } from "typescript";
 
 const List = (props: any) => {
     const [todoLists, setTodoLists] = useState<Array<ReactElement>>([]);
+    const [lists, setList] = useState<string>("");
     const menuIsOpen: boolean = useSelector((state: any) => state.menuOpen);
 
     const renderTodoLists = async (): Promise<void> => {

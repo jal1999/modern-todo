@@ -1,14 +1,17 @@
 import { ReactElement, useEffect } from 'react';
 import decode from "jwt-decode";
 import { useDispatch } from 'react-redux';
+import { useCookies } from 'react-cookie';
 
 const GoogleOAuth = (props: any): ReactElement => {
+    const [cookies, setCookie, deleteCookie] = useCookies();
     const dispatch = useDispatch();    
 
     const signInHandler = ({ credential: token }: any) => {
         const { email } = JSON.parse(JSON.stringify(decode(token)));
         dispatch({ type: "login", email: email, token: token, issuer: "google" });
-        // window.location.replace("http://localhost:3000/");
+        setCookie("isLoggedIn", "true");
+        window.location.replace("http://localhost:3000/");
     };
 
     // This useEffect block is needed, else the sign in button will disappear on any re-render.

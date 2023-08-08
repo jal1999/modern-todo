@@ -14,7 +14,7 @@ export interface Response {
  * @param {string} requestUrl - The URL of the resource you want to retrieve.
  * @returns A Promise that resolves to a Response object.
  */
-export const getRequest = (requestUrl: string, token: string): Promise<Response> => {
+export const getRequest = (requestUrl: string): Promise<Response> => {
     return new Promise(async (resolve, reject) => {
         try {
             const { data: responseBody, status: responseStatus }  = await axios.get(requestUrl);

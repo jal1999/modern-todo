@@ -18,7 +18,7 @@ app.set("port", PORT);
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(cookieParser());
 
 // Routes
