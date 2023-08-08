@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa6";
 import globals from "../../../assets/styles/global.css"
 import { useDispatch, useSelector } from "react-redux";
 import Item from "./Item";
+import { JsxElement } from "typescript";
 
 const List = (props: any) => {
     const [todoLists, setTodoLists] = useState<Array<ReactElement>>([]);
@@ -14,11 +15,11 @@ const List = (props: any) => {
         const email = "jlafarr99@gmail.com";
         if (!email)
             return;
-        const todos = await getAllTodoLists(email);
-        const newTodos = todos.map((list: any) => {
+        const todos: Array<TodoList> = await getAllTodoLists(email);
+        const newTodos: Array<ReactElement> = todos.map((list: TodoList) => {
             return (
                 <div className={`${styles.todoList} ${!menuIsOpen ? styles.normal : styles.modalOpen}`} key={Math.random().toString()}>
-                    <Item todoListTitle={list.title} />
+                    <Item todoListTitle={list.title} todoListId={list._id} />
                 </div>
             )
         });

@@ -6,6 +6,7 @@ interface Entry {
 }
 
 export interface TodoList {
+    _id: string;
     title: string;
     content: Array<Entry>;
     dateOfCreation: string;

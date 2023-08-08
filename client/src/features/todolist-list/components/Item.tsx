@@ -1,4 +1,3 @@
-import { useHistory } from "react-router-dom";
 import { todoListRedirect } from "../services/itemServices";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "../../../assets/styles/Item.module.css"
