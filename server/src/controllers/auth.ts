@@ -27,6 +27,7 @@ export const internalLogin = async (req: Request, res: Response, next: NextFunct
         const token: GenerateToken = await generateToken(user.email);
         return res
             .cookie("token", token.token, { maxAge: token.expires, httpOnly: true })
+            .cookie("email", user.email, { httpOnly: true })
             .status(200)
             .json({
                 token: await generateToken(user.email)
